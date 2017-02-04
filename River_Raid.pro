@@ -16,12 +16,26 @@ SOURCES += main.cpp \
     viewmain.cpp \
     scenemain.cpp \
     fighter.cpp \
-    bullet.cpp
+    bullet.cpp \
+    obstacle.cpp \
+    helicopter.cpp \
+    ship.cpp \
+    jet.cpp \
+    land.cpp \
+    fueltank.cpp \
+    gate.cpp
 
 HEADERS  += \
     viewmain.h \
-    scenemain.h \
     fighter.h \
-    bullet.h
+    bullet.h \
+    obstacle.h \
+    helicopter.h \
+    ship.h \
+    jet.h \
+    land.h \
+    fueltank.h \
+    gate.h \
+    scenemain.h
 
-FORMS    += mainwindow.ui
+FORMS    +=

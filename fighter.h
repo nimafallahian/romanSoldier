@@ -2,8 +2,8 @@
 #define FIGHTER_H
 #include <QGraphicsRectItem>
 #include <QKeyEvent>
-#define Fighterheight 80
-#define Fighterwidth 50
+#define Fighterheight 100
+#define Fighterwidth 62
 class Fighter : public QGraphicsRectItem
 {
 public:
