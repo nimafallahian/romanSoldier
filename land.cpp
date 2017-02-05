@@ -88,7 +88,9 @@ bool Land::InOut()
 
 bool Land::Inview()
 {
-    return (rects[1]->y() == 1000);
+    if(rects[1]->y() == 1000){
+        return 1;
+    }
 }
 
 void Land::moveV()
@@ -100,6 +102,10 @@ void Land::moveV()
         Vtimer->stop();
         delete Vtimer;
         return;
+    }
+    if (Inview()){
+        qDebug() << "inview signal emitted";
+        emit end();
     }
     for(int i = 0 ; i < rects.size() ; i++){
         rects[i]->setPos(rects[i]->x(),rects[i]->y() + Vspeed);

@@ -2,10 +2,8 @@
 #define BULLET_H
 #include <QGraphicsRectItem>
 #include <QGraphicsScene>
-#include "fighter.h"
 #include <QObject>
 #include <QList>
-#include "obstacle.h"
 #define Bulletwidth 5
 #define Bulletheight 8
 class Bullet :public QObject , public QGraphicsRectItem

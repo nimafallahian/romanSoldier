@@ -20,7 +20,8 @@ public slots:
 private:
     QVector <QGraphicsRectItem*> rects;
     int Vspeed;
-
+signals:
+    void end();
 };
 
 #endif // LAND_H

@@ -1,5 +1,5 @@
 #include "obstacle.h"
-
+#include "land.h"
 Obstacle::Obstacle()
 {
 //    QTimer* timer = new QTimer;

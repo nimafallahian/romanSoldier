@@ -10,6 +10,7 @@
 #include "gate.h"
 #include "fighter.h"
 #include "fueltank.h"
+#include "obstacle.h"
 Bullet::Bullet()
 {
     setRect(0,0,Bulletwidth,Bulletheight);

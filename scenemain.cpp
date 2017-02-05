@@ -3,16 +3,28 @@
 #include <stdlib.h>
 #include <time.h>
 #include "gate.h"
+#include "fighter.h"
+#include "helicopter.h"
+#include "jet.h"
+#include "ship.h"
+#include "fueltank.h"
+#include "land.h"
+#include "mapdrawer.h"
 SceneMain::SceneMain()
 {
     width = 800;
     height = 2000;
     this->setSceneRect(0,0,width,height);
 }
-QVector <Obstacle*> SceneMain::map1Draw(Fighter *player, int difficulty , int gateWidth)
+QVector <Obstacle*> SceneMain::map1Draw( int difficulty , int gateWidth )
 {
+    this->difficulty = difficulty;
+    this->gateWidth = gateWidth;
     QVector <Obstacle*> obstacles;
     Land *Lland1 = new Land(0,100,1000,gateWidth,this);
+    this->land1 = Lland1;
+//    qDebug() << "connected";
+//    connect(Lland1,SIGNAL(end()),hisMajesty,SLOT(map1Draw()));
     Land *Lland2 = new Land(1,100,1000,gateWidth,this);
     Gate *gate = new Gate(gateWidth);
     addItem(gate);

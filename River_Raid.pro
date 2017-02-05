@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     jet.cpp \
     land.cpp \
     fueltank.cpp \
-    gate.cpp
+    gate.cpp \
+    mapdrawer.cpp
 
 HEADERS  += \
     viewmain.h \
@@ -36,6 +37,7 @@ HEADERS  += \
     land.h \
     fueltank.h \
     gate.h \
-    scenemain.h
+    scenemain.h \
+    mapdrawer.h
 
 FORMS    +=
