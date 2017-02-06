@@ -5,7 +5,11 @@
 #include <typeinfo>
 Land::Land(bool RL, int width,int height , int gateWidth,QGraphicsScene* scene)
 {
+    nextOne = 0;
     Vspeed = 10;
+    normalVspeed = 10;     //Vertical speed
+    incVspeed = 20;
+    decVspeed = 5;
     QGraphicsRectItem* rect = new QGraphicsRectItem();
     rect->setRect(0,0,width,height);
     if(RL){
@@ -88,7 +92,7 @@ bool Land::InOut()
 
 bool Land::Inview()
 {
-    if(rects[1]->y() == 1000){
+    if(rects[1]->y() > 1000){
         return 1;
     }
 }
@@ -104,8 +108,11 @@ void Land::moveV()
         return;
     }
     if (Inview()){
-        qDebug() << "inview signal emitted";
-        emit end();
+        if(!nextOne){
+            qDebug() << "inview signal emitted";
+            emit end();
+            nextOne = 1;
+        }
     }
     for(int i = 0 ; i < rects.size() ; i++){
         rects[i]->setPos(rects[i]->x(),rects[i]->y() + Vspeed);
@@ -122,3 +129,26 @@ void Land::moveV()
     }
 }
 
+void Land::speedUP()
+{
+    Vspeed = incVspeed;
+}
+
+void Land::speedDOWN()
+{
+    Vspeed = decVspeed;
+}
+
+void Land::speedNORMAL()
+{
+    Vspeed = normalVspeed;
+}
+void Land::STOP()
+{
+    Vspeed = 0;
+}
+
+void Land::RESUME()
+{
+    Vspeed = normalVspeed;
+}

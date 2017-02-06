@@ -5,10 +5,12 @@ Gate::Gate(int iwidth)
     qDebug() << "make gate";
     height = 50;
     width = iwidth;
-    Vspeed = 10;     //Vertical speed
+    Vspeed = 10;
+    normalVspeed = 10;     //Vertical speed
+    incVspeed = 20;
+    decVspeed = 5;
     Hspeed = 0;     //Horizontal speed
     hDirection = 1;
-    isSmart = 1;
     setRect(0,0,width,height);
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
@@ -27,4 +29,30 @@ void Gate::moveV()
             return;
         }
     }
+}
+
+void Gate::speedUP()
+{
+    Vspeed = incVspeed ;
+}
+
+void Gate::speedDOWN()
+{
+    Vspeed = decVspeed;
+}
+
+void Gate::speedNORMAL()
+{
+    Vspeed = normalVspeed;
+}
+void Gate::STOP()
+{
+    Vspeed = 0;
+    isMoving = 0;
+}
+
+void Gate::RESUME()
+{
+    Vspeed = normalVspeed;
+    isMoving = 1;
 }

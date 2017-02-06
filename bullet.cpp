@@ -11,17 +11,21 @@
 #include "fighter.h"
 #include "fueltank.h"
 #include "obstacle.h"
-Bullet::Bullet()
+Bullet::Bullet(Fighter *player)
 {
+    Vspeed = 10;
+    normalSpeed = 10;
     setRect(0,0,Bulletwidth,Bulletheight);
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
     timer->start(50);
+    connect(player,SIGNAL(Stop()),SLOT(STOP()));
+    connect(player,SIGNAL(Resume()),this,SLOT(RESUME()));
 }
 
 void Bullet::move()
 {
-    setPos(x(),y()-10);
+    setPos(x(),y()-Vspeed);
     QList <QGraphicsItem*> cldItems = collidingItems();
     for(int i = 0 ; i < cldItems.size() ; i++){
 //        qDebug() << typeid(*(cldItems[i]));
@@ -49,4 +53,15 @@ void Bullet::move()
         scene()->removeItem(this);
         delete this;
     }
+}
+
+void Bullet::STOP()
+{
+    Vspeed = 0;
+}
+void Bullet::RESUME()
+{
+    Vspeed = normalSpeed;
+
+    qDebug() << "back to normal";
 }

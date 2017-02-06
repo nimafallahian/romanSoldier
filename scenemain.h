@@ -10,15 +10,13 @@ class SceneMain : public QGraphicsScene
 {
 public:
     SceneMain();
-    QVector <Obstacle*> map1Draw( int difficulty , int gateWidth );
+    QVector <Obstacle*> map1Draw(Fighter* player, int difficulty , int gateWidth );
     int getHeight() const;
-    void setHeight(int value);
     int difficulty ;
     int gateWidth ;
-    Land* land1;
+    Land* lands;
 //    mapDrawer* hisMajesty;
 private:
-    Obstacle *pivot;
     int width;
     int height;
     //    void mapdrawer(Fighter* player , int difficlty);

@@ -15,10 +15,13 @@ public:
 protected:
     int height;
     int width;
-    int Vspeed;     //Vertical speed
+    int Vspeed;
+    int normalVspeed ;     //Vertical speed
+    int incVspeed ;
+    int decVspeed ;
     int Hspeed;     //Horizontal speed
     bool hDirection;
-    bool isSmart;
+    bool isMoving;
     QTimer *Vtimer;
 public :
     void moveV();

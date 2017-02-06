@@ -16,17 +16,33 @@ SceneMain::SceneMain()
     height = 2000;
     this->setSceneRect(0,0,width,height);
 }
-QVector <Obstacle*> SceneMain::map1Draw( int difficulty , int gateWidth )
+QVector <Obstacle*> SceneMain::map1Draw(Fighter* player, int difficulty , int gateWidth )
 {
     this->difficulty = difficulty;
     this->gateWidth = gateWidth;
     QVector <Obstacle*> obstacles;
     Land *Lland1 = new Land(0,100,1000,gateWidth,this);
-    this->land1 = Lland1;
+    this->lands = Lland1;
 //    qDebug() << "connected";
 //    connect(Lland1,SIGNAL(end()),hisMajesty,SLOT(map1Draw()));
     Land *Lland2 = new Land(1,100,1000,gateWidth,this);
+    connect(player,SIGNAL(speedUp()),Lland1,SLOT(speedUP()));
+    connect(player,SIGNAL(speedDown()),Lland1,SLOT(speedDOWN()));
+    connect(player,SIGNAL(speedNormal()),Lland1,SLOT(speedNORMAL()));
+    connect(player,SIGNAL(Stop()),Lland1,SLOT(STOP()));
+    connect(player,SIGNAL(Resume()),Lland1,SLOT(RESUME()));
+
+    connect(player,SIGNAL(speedUp()),Lland2,SLOT(speedUP()));
+    connect(player,SIGNAL(speedDown()),Lland2,SLOT(speedDOWN()));
+    connect(player,SIGNAL(speedNormal()),Lland2,SLOT(speedNORMAL()));
+    connect(player,SIGNAL(Stop()),Lland2,SLOT(STOP()));
+    connect(player,SIGNAL(Resume()),Lland2,SLOT(RESUME()));
     Gate *gate = new Gate(gateWidth);
+    connect(player,SIGNAL(speedUp()),gate,SLOT(speedUP()));
+    connect(player,SIGNAL(speedDown()),gate,SLOT(speedDOWN()));
+    connect(player,SIGNAL(speedNormal()),gate,SLOT(speedNORMAL()));
+    connect(player,SIGNAL(Stop()),gate,SLOT(STOP()));
+    connect(player,SIGNAL(Resume()),gate,SLOT(RESUME()));
     addItem(gate);
     gate->setPos((this->width/2) - (gateWidth/2) , 0);
     qDebug() << (this->width/2) - (gateWidth/2) ;
@@ -43,6 +59,11 @@ QVector <Obstacle*> SceneMain::map1Draw( int difficulty , int gateWidth )
         Helicopter *heli = new Helicopter (1);
         addItem(heli);
         obstacles.push_back(heli);
+        connect(player,SIGNAL(speedUp()),heli,SLOT(speedUP()));
+        connect(player,SIGNAL(speedDown()),heli,SLOT(speedDOWN()));
+        connect(player,SIGNAL(speedNormal()),heli,SLOT(speedNORMAL()));
+        connect(player,SIGNAL(Stop()),heli,SLOT(STOP()));
+        connect(player,SIGNAL(Resume()),heli,SLOT(RESUME()));
         //make heli
     }
     for(int j = 0 ; j < enemyDiffultyTable[difficulty][1] ; j++){
@@ -51,6 +72,11 @@ QVector <Obstacle*> SceneMain::map1Draw( int difficulty , int gateWidth )
         Ship *ship = new Ship (1);
         addItem(ship);
         obstacles.push_back(ship);
+        connect(player,SIGNAL(speedUp()),ship,SLOT(speedUP()));
+        connect(player,SIGNAL(speedDown()),ship,SLOT(speedDOWN()));
+        connect(player,SIGNAL(speedNormal()),ship,SLOT(speedNORMAL()));
+        connect(player,SIGNAL(Stop()),ship,SLOT(STOP()));
+        connect(player,SIGNAL(Resume()),ship,SLOT(RESUME()));
     }
     for(int j = 0 ; j < enemyDiffultyTable[difficulty][2] ; j++){
         //make jet
@@ -58,6 +84,11 @@ QVector <Obstacle*> SceneMain::map1Draw( int difficulty , int gateWidth )
         Jet *jet = new Jet;
         addItem(jet);
         obstacles.push_back(jet);
+        connect(player,SIGNAL(speedUp()),jet,SLOT(speedUP()));
+        connect(player,SIGNAL(speedDown()),jet,SLOT(speedDOWN()));
+        connect(player,SIGNAL(speedNormal()),jet,SLOT(speedNORMAL()));
+        connect(player,SIGNAL(Stop()),jet,SLOT(STOP()));
+        connect(player,SIGNAL(Resume()),jet,SLOT(RESUME()));
     }
     for(int j = 0 ; j < enemyDiffultyTable[difficulty][3] ; j++){
         //make fuel
@@ -65,6 +96,11 @@ QVector <Obstacle*> SceneMain::map1Draw( int difficulty , int gateWidth )
         FuelTank *fuel = new FuelTank;
         addItem(fuel);
         obstacles.push_back(fuel);
+        connect(player,SIGNAL(speedUp()),fuel,SLOT(speedUP()));
+        connect(player,SIGNAL(speedDown()),fuel,SLOT(speedDOWN()));
+        connect(player,SIGNAL(speedNormal()),fuel,SLOT(speedNORMAL()));
+        connect(player,SIGNAL(Stop()),fuel,SLOT(STOP()));
+        connect(player,SIGNAL(Resume()),fuel,SLOT(RESUME()));
     }
     int objects = obstacles.size();
     bool used[18] = {0};
