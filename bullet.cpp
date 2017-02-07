@@ -1,6 +1,8 @@
+// tahesh un rectitem ro dorost konim
+
+
 #include "bullet.h"
 #include <QDebug>
-#include <QTimer>
 #include <typeinfo>
 #include <QGraphicsItem>
 #include "ship.h"
@@ -11,12 +13,13 @@
 #include "fighter.h"
 #include "fueltank.h"
 #include "obstacle.h"
-Bullet::Bullet(Fighter *player)
+Bullet::Bullet(Fighter * player)
 {
     Vspeed = 10;
     normalSpeed = 10;
-    setRect(0,0,Bulletwidth,Bulletheight);
-    QTimer* timer = new QTimer;
+//    setRect(0,0,Bulletwidth,Bulletheight);
+    setPixmap(QPixmap(":/images/bullet.png"));
+    timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
     timer->start(50);
     connect(player,SIGNAL(Stop()),SLOT(STOP()));
@@ -32,8 +35,12 @@ void Bullet::move()
         if(typeid(*(cldItems[i])) == typeid(Ship) ||typeid(*(cldItems[i])) == typeid(Helicopter)
                 || typeid(*(cldItems[i])) == typeid(Jet) || typeid(*(cldItems[i])) == typeid(Gate)
                 || typeid(*(cldItems[i])) == typeid(FuelTank)){
+            Explosion * xplosion = new Explosion(x(), y() - 10);
+            scene()->addItem(xplosion);
+//            xplosion->set(x(), y() - 10);
             scene()->removeItem(cldItems[i]);
             scene()->removeItem(this);
+
             delete cldItems[i];
             delete this;
             return;
@@ -48,7 +55,8 @@ void Bullet::move()
         }
     }
 
-    if(y() + rect().height() < 1100){
+//    if(y() + rect().height() < 1100){ // bullt.png's height is 100
+    if(y() + 100 < 1100){
         qDebug() << "bullet deleted";
         scene()->removeItem(this);
         delete this;

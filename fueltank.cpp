@@ -4,13 +4,15 @@ FuelTank::FuelTank()
 {
     height = 50;
     width = 50;
-    Vspeed = 10;
+    Vspeed = 10;     //Vertical speed
     normalVspeed = 10;     //Vertical speed
     incVspeed = 20;
     decVspeed = 5;
     Hspeed = 0;     //Horizontal speed
     hDirection = 0;
-    setRect(0,0,width,height);
+
+//    setRect(0,0,width,height);
+    setPixmap(QPixmap(":/images/enemy.png"));
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 //    Land* land1 = new Land(0,20,600,scenemain);
 //    Land* land2 = new Land(50,100,scenemain);
     QVector <Obstacle*> map1Obstacles = scenemain->map1Draw(player,0,300);
-    mapDrawer *hisMajesty = new mapDrawer(scenemain , player);
+    mapDrawer *hisMajesty = new mapDrawer(scenemain, player);
 
     ViewMain *viewmain = new ViewMain(scenemain);
     player->setFocus();

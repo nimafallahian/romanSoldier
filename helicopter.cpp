@@ -5,13 +5,14 @@ Helicopter::Helicopter(bool hdir)
 {
     height = 50;
     width = 120;
-    Vspeed = 10;
+    Vspeed = 10;     //Vertical speed
     normalVspeed = 10;     //Vertical speed
     incVspeed = 20;
     decVspeed = 5;
     Hspeed = 10;     //Horizontal speed
     hDirection = hdir;
-    setRect(0,0,width,height);
+//    setRect(0,0,width,height);
+    setPixmap(QPixmap(":/images/heli.png"));
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -29,7 +30,7 @@ void Helicopter::moveV()
             qDebug() << "Defeat";
             return;
         }
-        else if(typeid(*(cldItems[i])) == typeid(QGraphicsRectItem) ){
+        else if(typeid(*(cldItems[i])) == typeid(QGraphicsPixmapItem) ){
             if(cldItems[i]->x() > x()){
                 hDirection = 0;
             }
@@ -41,6 +42,7 @@ void Helicopter::moveV()
 
     }
 }
+
 
 void Helicopter::speedUP()
 {
@@ -67,3 +69,4 @@ void Helicopter::RESUME()
     Vspeed = normalVspeed;
     isMoving = 1;
 }
+

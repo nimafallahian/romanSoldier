@@ -4,7 +4,7 @@ Jet::Jet()
 {
     height = 50;
     width = 60;
-    Vspeed = 10;
+    Vspeed = 10;     //Vertical speed
     normalVspeed = 10;     //Vertical speed
     incVspeed = 20;
     decVspeed = 5;
@@ -13,7 +13,8 @@ Jet::Jet()
     hDirection = rand()%2;
     startingY = (rand() % 300) + 1200;
     qDebug() << startingY;
-    setRect(0,0,width,height);
+//    setRect(0,0,width,height);
+    setPixmap(QPixmap(":/images/jet.png"));
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -35,6 +36,7 @@ void Jet::moveV()
         }
     }
 }
+
 
 void Jet::speedUP()
 {

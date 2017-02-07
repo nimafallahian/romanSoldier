@@ -1,12 +1,12 @@
 #ifndef OBSTACLE_H
 #define OBSTACLE_H
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QTimer>
 #include <typeinfo>
 #include <QDebug>
 #include "land.h"
-class Obstacle :/*public QObject ,*/ public QGraphicsRectItem
+class Obstacle :/*public QObject ,*/ public QGraphicsPixmapItem
 {
 //     Q_OBJECT
 public:
@@ -15,7 +15,7 @@ public:
 protected:
     int height;
     int width;
-    int Vspeed;
+    int Vspeed;     //Vertical speed
     int normalVspeed ;     //Vertical speed
     int incVspeed ;
     int decVspeed ;

@@ -10,11 +10,16 @@
 #include "fueltank.h"
 #include "land.h"
 #include "mapdrawer.h"
+#include <QBrush>
 SceneMain::SceneMain()
 {
     width = 800;
     height = 2000;
     this->setSceneRect(0,0,width,height);
+    bgsound = new QMediaPlayer();
+    bgsound->setMedia(QUrl("qrc:/sounds/bgsound.mp3"));
+    bgsound->play();
+    setBackgroundBrush(Qt::blue);
 }
 QVector <Obstacle*> SceneMain::map1Draw(Fighter* player, int difficulty , int gateWidth )
 {

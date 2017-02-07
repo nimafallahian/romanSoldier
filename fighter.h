@@ -1,11 +1,13 @@
 #ifndef FIGHTER_H
 #define FIGHTER_H
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QKeyEvent>
+#include <QMediaPlayer>
 #include <QObject>
+
 #define Fighterheight 100
 #define Fighterwidth 62
-class Fighter :public QObject, public QGraphicsRectItem
+class Fighter : public QObject ,public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
@@ -18,6 +20,8 @@ signals:
     void speedDown();
     void Stop();
     void Resume();
+private:
+    QMediaPlayer * bulletsound;
 };
 
 #endif // FIGHTER_H
