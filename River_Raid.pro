@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     fueltank.cpp \
     gate.cpp \
     mapdrawer.cpp \
-    explosion.cpp
+    explosion.cpp \
+    firstbutton.cpp
 
 HEADERS  += \
     viewmain.h \
@@ -41,7 +42,8 @@ HEADERS  += \
     gate.h \
     scenemain.h \
     mapdrawer.h \
-    explosion.h
+    explosion.h \
+    firstbutton.h
 
 FORMS    +=
 

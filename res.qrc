@@ -14,5 +14,6 @@
         <file>jet.png</file>
         <file>heli.png</file>
         <file>explosion.png</file>
+        <file>button.png</file>
     </qresource>
 </RCC>
