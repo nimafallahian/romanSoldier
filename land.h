@@ -14,21 +14,12 @@ public:
     QTimer *Vtimer;
     bool InOut();
     bool Inview();
-    bool nextOne;
 public slots:
     void moveV();
-    void speedUP();
-    void speedDOWN();
-    void speedNORMAL();
-    void STOP();
-    void RESUME();
 //    void moveH();
 private:
     QVector <QGraphicsRectItem*> rects;
     int Vspeed;
-    int normalVspeed ;     //Vertical speed
-    int incVspeed ;
-    int decVspeed ;
 signals:
     void end();
 };

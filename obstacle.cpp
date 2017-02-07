@@ -2,10 +2,6 @@
 #include "land.h"
 Obstacle::Obstacle()
 {
-    normalVspeed = 10;     //Vertical speed
-    incVspeed = 20;
-    decVspeed = 5;
-    isMoving = 1;
 //    QTimer* timer = new QTimer;
 //    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
     //    timer->start(50);
@@ -36,7 +32,7 @@ void Obstacle::moveV()
 void Obstacle::moveH()
 {
         int nextx;
-        nextx = x() + (Hspeed * ((2*hDirection)-1))*isMoving;
+        nextx = x() + (Hspeed * ((2*hDirection)-1));
         this->setPos(nextx,y());
 }
 //Obstacle::~Obstacle()

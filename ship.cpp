@@ -4,13 +4,12 @@ Ship::Ship(bool hdir)
 {
     height = 50;
     width = 160;
-    Vspeed = 10;
-    normalVspeed = 10;     //Vertical speed
-    incVspeed = 20;
-    decVspeed = 5;
+    Vspeed = 10;     //Vertical speed
     Hspeed = 5;     //Horizontal speed
     hDirection = hdir;
-    setRect(0,0,width,height);
+    isSmart = 0;
+//    setRect(0,0,width,height);
+    setPixmap(QPixmap(":/images/ship.png"));
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -28,7 +27,7 @@ void Ship::moveV()
             qDebug() << "Defeat";
             return;
         }
-        else if(typeid(*(cldItems[i])) == typeid(QGraphicsRectItem) ){
+        else if(typeid(*(cldItems[i])) == typeid(QGraphicsPixmapItem)){
             if(cldItems[i]->x() > x()){
                 hDirection = 0;
             }
@@ -39,29 +38,4 @@ void Ship::moveV()
         }
 
     }
-}
-
-void Ship::speedUP()
-{
-    Vspeed = incVspeed;
-}
-
-void Ship::speedDOWN()
-{
-    Vspeed = decVspeed;
-}
-
-void Ship::speedNORMAL()
-{
-    Vspeed = normalVspeed;
-}
-void Ship::STOP()
-{
-    Vspeed = 0;
-    isMoving = 0;
-}
-void Ship::RESUME()
-{
-    Vspeed = normalVspeed;
-    isMoving = 1;
 }

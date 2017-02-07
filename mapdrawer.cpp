@@ -1,16 +1,15 @@
 #include "mapdrawer.h"
 #include "QDebug"
-mapDrawer::mapDrawer(SceneMain* mysceneInp,Fighter* player)
+mapDrawer::mapDrawer(SceneMain* mysceneInp)
 {
-    this->player = player;
     myscene = mysceneInp;
-    connect(mysceneInp->lands,SIGNAL(end()),this,SLOT(map1Draw()));
+    connect(mysceneInp->land1,SIGNAL(end()),this,SLOT(map1Draw()));
     qDebug() << "connected";
 }
 
 void mapDrawer::map1Draw()
 {
-    myscene->map1Draw(player,myscene->difficulty,myscene->gateWidth);
-    connect(myscene->lands,SIGNAL(end()),this,SLOT(map1Draw()));
+    myscene->map1Draw(myscene->difficulty,myscene->gateWidth);
+    connect(myscene->land1,SIGNAL(end()),this,SLOT(map1Draw()));
     qDebug() << "slot called";
 }

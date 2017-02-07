@@ -9,8 +9,7 @@ class mapDrawer : public QObject
 private:
     SceneMain* myscene;
 public:
-    mapDrawer(SceneMain* myscene , Fighter* player);
-    Fighter *player;
+    mapDrawer(SceneMain* myscene);
 //    QVector <Obstacle*> (map1Draw) (int difficulty , int gateWidth , mapDrawer* hisMajesty);
 public slots:
     void map1Draw();

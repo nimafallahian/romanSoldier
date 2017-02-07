@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui\
+            multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +25,8 @@ SOURCES += main.cpp \
     land.cpp \
     fueltank.cpp \
     gate.cpp \
-    mapdrawer.cpp
+    mapdrawer.cpp \
+    explosion.cpp
 
 HEADERS  += \
     viewmain.h \
@@ -38,6 +40,10 @@ HEADERS  += \
     fueltank.h \
     gate.h \
     scenemain.h \
-    mapdrawer.h
+    mapdrawer.h \
+    explosion.h
 
 FORMS    +=
+
+RESOURCES += \
+    res.qrc

@@ -9,11 +9,6 @@ public:
     Gate(int gateWidth);
 public slots:
     void moveV();
-    void speedUP();
-    void speedDOWN();
-    void speedNORMAL();
-    void STOP();
-    void RESUME();
 };
 
 #endif // GATE_H

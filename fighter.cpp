@@ -2,12 +2,16 @@
 #include "bullet.h"
 #include <QGraphicsScene>
 #include <QDebug>
+
 Fighter::Fighter()
 {
-    this->setRect(0,0,Fighterwidth,Fighterheight);
+//    this->setRect(0,0,Fighterwidth,Fighterheight);
+    setPixmap(QPixmap(":/images/player.png"));
     this->setPos(369,1900);
     this->setFlag(QGraphicsItem::ItemIsFocusable);
     this->setFocus();
+    bulletsound = new QMediaPlayer();
+    bulletsound->setMedia(QUrl("qrc:/sounds/bullet.wav"));
 }
 void Fighter::keyPressEvent(QKeyEvent* event)
 {
@@ -21,38 +25,18 @@ void Fighter::keyPressEvent(QKeyEvent* event)
     }
     else if(k == Qt::Key_Space){
 //        qDebug() << "bullet created";
-        Bullet* bullet = new Bullet(this);
+        Bullet* bullet = new Bullet();
         bullet->setPos(x()+(Fighterwidth/2)-(Bulletwidth/2),y());
         scene()->addItem(bullet);
-    }
-    else if(k == Qt::Key_Up){
-        qDebug() << "pressed";
-        emit speedUp();
-    }
-    else if(k == Qt::Key_Down){
-        qDebug() << "pressed";
-        emit speedDown();
-    }
-    else if(k == Qt::Key_P){
-        emit Stop();
-    }
-    else if(k == Qt::Key_R){
-        emit Resume();
+
+        if(bulletsound->state() == QMediaPlayer::PlayingState){
+            bulletsound->setPosition(0);
+        }
+        else if(bulletsound->state() == QMediaPlayer::StoppedState){
+            bulletsound->play();
+        }
     }
 //    else{
 //        qDebug() << "other key";
-    //    }
-}
-
-void Fighter::keyReleaseEvent(QKeyEvent *event)
-{
-    if(event->key() == Qt::Key_Up){
-        qDebug() << "released";
-        emit speedNormal();
-    }
-    if(event->key() == Qt::Key_Down){
-        qDebug() << "released";
-        emit speedNormal();
-    }
-
+//    }
 }

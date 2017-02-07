@@ -1,24 +1,23 @@
 #ifndef BULLET_H
 #define BULLET_H
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QObject>
 #include <QList>
-#include "fighter.h"
+#include <QTimer>
+#include <QMediaPlayer>
+#include "explosion.h"
 #define Bulletwidth 5
 #define Bulletheight 8
-class Bullet :public QObject , public QGraphicsRectItem
+class Bullet :public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
-private:
-    int Vspeed;
-    int normalSpeed;
 public:
-    Bullet(Fighter *);
+    Bullet();
 public slots:
     void move();
-    void STOP();
-    void RESUME();
+private:
+    QTimer * timer;
 };
 
 #endif // BULLET_H

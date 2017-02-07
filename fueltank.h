@@ -8,11 +8,6 @@ public:
     FuelTank();
 public slots:
     void moveV();
-    void speedUP();
-    void speedDOWN();
-    void speedNORMAL();
-    void STOP();
-    void RESUME();
 //    void moveH();
 };
 
