@@ -8,6 +8,7 @@
 #include <QMediaPlayer>
 #include "explosion.h"
 #include "fighter.h"
+#include "game.h"
 #define Bulletwidth 5
 #define Bulletheight 8
 class Bullet :public QObject , public QGraphicsPixmapItem

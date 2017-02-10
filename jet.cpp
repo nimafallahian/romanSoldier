@@ -9,7 +9,6 @@ Jet::Jet()
     incVspeed = 20;
     decVspeed = 5;
     Hspeed = 15;     //Horizontal speed
-//    hDirection = -1;
     hDirection = rand()%2;
     startingY = (rand() % 300) + 1200;
     qDebug() << startingY;
@@ -32,6 +31,7 @@ void Jet::moveV()
         if (typeid(*(cldItems[i])) == typeid(Fighter)){
             // Defeat
             qDebug() << "Defeat";
+            emit Stop();
             return;
         }
     }

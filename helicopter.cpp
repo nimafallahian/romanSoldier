@@ -28,6 +28,7 @@ void Helicopter::moveV()
         if (typeid(*(cldItems[i])) == typeid(Fighter)){
             // Defeat
             qDebug() << "Defeat";
+            emit Stop();
             return;
         }
         else if(typeid(*(cldItems[i])) == typeid(QGraphicsPixmapItem) ){

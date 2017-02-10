@@ -15,5 +15,14 @@
         <file>heli.png</file>
         <file>explosion.png</file>
         <file>button.png</file>
+        <file>land.jpg</file>
+        <file>130.jpg</file>
+        <file>160.jpg</file>
+        <file>190.jpg</file>
+        <file>220.jpg</file>
+        <file>250.jpg</file>
+        <file>continue.png</file>
+        <file>fuel.png</file>
+        <file>gate.png</file>
     </qresource>
 </RCC>

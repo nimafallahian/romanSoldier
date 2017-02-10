@@ -3,15 +3,17 @@
 #include <QDebug>
 #include <QTimer>
 #include <typeinfo>
-Land::Land(bool RL, int width,int height , int gateWidth,QGraphicsScene* scene)
+Land::Land(bool RL, int width,int height, int gateWidth, QGraphicsScene* scene)
 {
     nextOne = 0;
     Vspeed = 10;
     normalVspeed = 10;     //Vertical speed
     incVspeed = 20;
     decVspeed = 5;
-    QGraphicsRectItem* rect = new QGraphicsRectItem();
-    rect->setRect(0,0,width,height);
+//    QGraphicsRectItem* rect = new QGraphicsRectItem();
+//    rect->setRect(0,0,width,height);
+    QGraphicsPixmapItem * rect = new QGraphicsPixmapItem();
+    rect->setPixmap(QPixmap(":/images/land.jpg"));
     if(RL){
         rect->setPos(scene->width()- width , 0);
     }
@@ -21,16 +23,58 @@ Land::Land(bool RL, int width,int height , int gateWidth,QGraphicsScene* scene)
     if(RL){
         int widthStep = ((400 - gateWidth/2) - width)/5;
         for(int i = 0 ; i < 5 ; i++){
-            QGraphicsRectItem* rect = new QGraphicsRectItem();
-            rect->setRect(0,0,width + (widthStep*(5-i)),10);
-            rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
+            QGraphicsPixmapItem* rect = new QGraphicsPixmapItem();
+
+            if(i == 0){
+                rect->setPixmap(QPixmap(":/images/130.jpg"));
+                rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
+            }
+            else if(i == 1){
+                rect->setPixmap(QPixmap(":/images/160.jpg"));
+                rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
+            }
+            else if(i == 2){
+                rect->setPixmap(QPixmap(":/images/190.jpg"));
+                rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
+            }
+            else if(i == 3){
+                rect->setPixmap(QPixmap(":/images/220.jpg"));
+                rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
+            }
+            else if(i == 4){
+                rect->setPixmap(QPixmap(":/images/250.jpg"));
+                rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
+            }
+
+//            rect->setPixmap(0,0,width + (widthStep*(5-i)),10);
+//            rect->setPos(700-(widthStep*(5-i)),0 + (10*i));
             scene->addItem(rect);
             rects.push_back(rect);
         }
         for(int i = 0 ; i < 5 ; i++){
-            QGraphicsRectItem* rect = new QGraphicsRectItem();
-            rect->setRect(0,0,width + (widthStep*(i+1)),10);
-            rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
+            QGraphicsPixmapItem* rect = new QGraphicsPixmapItem();
+            if(i == 0){
+                rect->setPixmap(QPixmap(":/images/130.jpg"));
+                rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
+            }
+            else if(i == 1){
+                rect->setPixmap(QPixmap(":/images/160.jpg"));
+                rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
+            }
+            else if(i == 2){
+                rect->setPixmap(QPixmap(":/images/190.jpg"));
+                rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
+            }
+            else if(i == 3){
+                rect->setPixmap(QPixmap(":/images/220.jpg"));
+                rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
+            }
+            else if(i == 4){
+                rect->setPixmap(QPixmap(":/images/250.jpg"));
+                rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
+            }
+//            rect->setRect(0,0,width + (widthStep*(i+1)),10);
+//            rect->setPos(700-(widthStep*(i+1)),950 + (10*i));
             scene->addItem(rect);
             rects.push_back(rect);
         }
@@ -38,16 +82,59 @@ Land::Land(bool RL, int width,int height , int gateWidth,QGraphicsScene* scene)
     else{
         int widthStep = ((400 - gateWidth/2) - width)/5;
         for(int i = 0 ; i < 5 ; i++){
-            QGraphicsRectItem* rect = new QGraphicsRectItem();
-            rect->setRect(0,0,width + (widthStep*(5-i)),10);
-            rect->setPos(0,0 + (10*i));
+            QGraphicsPixmapItem* rect = new QGraphicsPixmapItem();
+            if(i == 0){
+                rect->setPixmap(QPixmap(":/images/250.jpg"));
+                rect->setPos(0, 0 + (10*i));
+            }
+            else if(i == 1){
+                rect->setPixmap(QPixmap(":/images/220.jpg"));
+                rect->setPos(0, 0 + (10*i));
+            }
+            else if(i == 2){
+                rect->setPixmap(QPixmap(":/images/190.jpg"));
+                rect->setPos(0, 0 + (10*i));
+            }
+            else if(i == 3){
+                rect->setPixmap(QPixmap(":/images/160.jpg"));
+                rect->setPos(0, 0 + (10*i));
+            }
+            else if(i == 4){
+                rect->setPixmap(QPixmap(":/images/130.jpg"));
+                rect->setPos(0, 0 + (10*i));
+            }
+
+//            rect->setRect(0,0,width + (widthStep*(5-i)),10);
+//            rect->setPos(0,0 + (10*i));
             scene->addItem(rect);
             rects.push_back(rect);
         }
         for(int i = 0 ; i < 5 ; i++){
-            QGraphicsRectItem* rect = new QGraphicsRectItem();
-            rect->setRect(0,0,width + (widthStep*(i+1)),10);
-            rect->setPos(0,950 + (10*i));
+            QGraphicsPixmapItem* rect = new QGraphicsPixmapItem();
+
+            if(i == 0){
+                rect->setPixmap(QPixmap(":/images/130.jpg"));
+                rect->setPos(0, 950 + (10*i));
+            }
+            else if(i == 1){
+                rect->setPixmap(QPixmap(":/images/160.jpg"));
+                rect->setPos(0, 950 + (10*i));
+            }
+            else if(i == 2){
+                rect->setPixmap(QPixmap(":/images/190.jpg"));
+                rect->setPos(0, 950 + (10*i));
+            }
+            else if(i == 3){
+                rect->setPixmap(QPixmap(":/images/220.jpg"));
+                rect->setPos(0, 950 + (10*i));
+            }
+            else if(i == 4){
+                rect->setPixmap(QPixmap(":/images/250.jpg"));
+                rect->setPos(0, 950 + (10*i));
+            }
+
+//            rect->setRect(0,0,width + (widthStep*(i+1)),10);
+//            rect->setPos(0,950 + (10*i));
             scene->addItem(rect);
             rects.push_back(rect);
         }
@@ -121,6 +208,7 @@ void Land::moveV()
         QList <QGraphicsItem*> cldItems = rects[i]->collidingItems();
         for(int i = 0 ; i < cldItems.size() ; i++){
             if (typeid(*(cldItems[i])) == typeid(Fighter)){
+                emit Stop();
                 // Defeat
                 qDebug() << "Defeat";
                 return;

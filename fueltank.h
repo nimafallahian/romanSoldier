@@ -13,6 +13,8 @@ public slots:
     void speedNORMAL();
     void STOP();
     void RESUME();
+signals:
+    void incFUEL();
 //    void moveH();
 };
 

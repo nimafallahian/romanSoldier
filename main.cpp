@@ -5,14 +5,22 @@
 #include "land.h"
 #include "mapdrawer.h"
 #include "firstbutton.h"
+#include "game.h"
+
+Game * game;
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    game = new Game;
+
+    /*
     Fighter *player = new Fighter;
     SceneMain *scenemain = new SceneMain(player);
     scenemain->addItem(player);
     player->setFocus();
-    FirstButton::onlyFighter = player;
+//    FirstButton::onlyFighter = player;
 //    scenemain->mapdrawer(player,0);
 //    Land* land1 = new Land(0,20,600,scenemain);
 //    Land* land2 = new Land(50,100,scenemain);
@@ -20,6 +28,6 @@ int main(int argc, char *argv[])
     mapDrawer *hisMajesty = new mapDrawer(scenemain, player);
 
     ViewMain *viewmain = new ViewMain(scenemain);
-    player->setFocus();
+    player->setFocus();*/
     return a.exec();
 }

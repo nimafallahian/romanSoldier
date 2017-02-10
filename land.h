@@ -1,6 +1,6 @@
 #ifndef LAND_H
 #define LAND_H
-#include <QGraphicsRectItem>
+#include <QGraphicsItem>
 #include <QVector>
 #include <QGraphicsScene>
 #include <QObject>
@@ -24,13 +24,14 @@ public slots:
     void RESUME();
 //    void moveH();
 private:
-    QVector <QGraphicsRectItem*> rects;
+    QVector <QGraphicsItem*> rects;
     int Vspeed;
     int normalVspeed ;     //Vertical speed
     int incVspeed ;
     int decVspeed ;
 signals:
     void end();
+    void Stop();
 };
 
 #endif // LAND_H

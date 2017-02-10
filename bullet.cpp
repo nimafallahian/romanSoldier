@@ -1,6 +1,3 @@
-// tahesh un rectitem ro dorost konim
-
-
 #include "bullet.h"
 #include <QDebug>
 #include <typeinfo>
@@ -13,6 +10,9 @@
 #include "fighter.h"
 #include "fueltank.h"
 #include "obstacle.h"
+
+extern Game * game;
+
 Bullet::Bullet(Fighter * player)
 {
     Vspeed = 10;
@@ -35,6 +35,10 @@ void Bullet::move()
         if(typeid(*(cldItems[i])) == typeid(Ship) ||typeid(*(cldItems[i])) == typeid(Helicopter)
                 || typeid(*(cldItems[i])) == typeid(Jet) || typeid(*(cldItems[i])) == typeid(Gate)
                 || typeid(*(cldItems[i])) == typeid(FuelTank)){
+            if(typeid(*(cldItems[i])) == typeid(Ship) ||typeid(*(cldItems[i])) == typeid(Helicopter)
+                    || typeid(*(cldItems[i])) == typeid(Jet)){
+                game->score->increase();
+            }
             Explosion * xplosion = new Explosion(x(), y() - 10);
             scene()->addItem(xplosion);
 //            xplosion->set(x(), y() - 10);
@@ -45,7 +49,7 @@ void Bullet::move()
             delete this;
             return;
         }
-        else if (typeid(*(cldItems[i])) == typeid(QGraphicsRectItem)){
+        else if (typeid(*(cldItems[i])) == typeid(QGraphicsPixmapItem)){
             if(typeid(*(cldItems[i])) == typeid(Fighter)){
                 continue;
             }
@@ -70,6 +74,6 @@ void Bullet::STOP()
 void Bullet::RESUME()
 {
     Vspeed = normalSpeed;
-
     qDebug() << "back to normal";
+
 }

@@ -11,9 +11,9 @@ class FirstButton: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    FirstButton();
+    FirstButton(Fighter * onlyFighter);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    static Fighter * onlyFighter;
+    Fighter * onlyFighter;
 public slots:
     void STOP();
 signals:

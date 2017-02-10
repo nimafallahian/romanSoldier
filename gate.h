@@ -14,6 +14,8 @@ public slots:
     void speedNORMAL();
     void STOP();
     void RESUME();
+signals:
+    void Stop();
 };
 
 #endif // GATE_H

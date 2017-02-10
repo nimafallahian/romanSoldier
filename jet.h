@@ -15,6 +15,8 @@ public slots:
     void STOP();
     void RESUME();
 //    void moveH();
+signals:
+    void Stop();
 };
 
 #endif // JET_H

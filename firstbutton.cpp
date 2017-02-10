@@ -1,15 +1,24 @@
 #include "firstbutton.h"
 #include "fighter.h"
 
-Fighter * FirstButton::onlyFighter = 0;
+//Fighter * FirstButton::onlyFighter = 0;
 
-FirstButton::FirstButton()
+FirstButton::FirstButton(Fighter * onlyFighter)
 {
     qDebug() << "make button";
-    setPixmap(QPixmap(":/images/button.png"));
+    setPixmap(QPixmap(":/images/continue.png"));
 //    setRect(200, 100, 369, 1500);
-    this->setPos(300,1500);
+    this->setPos(350,1500);
+    this->onlyFighter = onlyFighter;
+    this->setZValue(1);
 }
+/*
+void FirstButton::STOP(int val){
+    setPixmap(QPixmap(":/images/stop.png"));
+
+    this->show();
+    // boom the game
+} */
 
 void FirstButton::STOP()
 {
@@ -21,8 +30,10 @@ void FirstButton::STOP()
 void FirstButton::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     emit Resume();
+//    emit SIGNAL(this->onlyFighter->Resume());
+    onlyFighter->emitRes();
     onlyFighter->setFocus();
-    qDebug() << "zhooon oooom areee";
+//    qDebug() << "zhooon oooom areee";
     this->hide();
 
 }

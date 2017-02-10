@@ -12,7 +12,7 @@ FuelTank::FuelTank()
     hDirection = 0;
 
 //    setRect(0,0,width,height);
-    setPixmap(QPixmap(":/images/enemy.png"));
+    setPixmap(QPixmap(":/images/fuel.png"));
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -25,6 +25,7 @@ void FuelTank::moveV()
     QList <QGraphicsItem*> cldItems = collidingItems();
     for(int i = 0 ; i < cldItems.size() ; i++){
         if (typeid(*(cldItems[i])) == typeid(Fighter)){
+            emit incFUEL();
 //            Add fuel
 //            qDebug() << "Refuel";
             return;

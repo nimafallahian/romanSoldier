@@ -2,7 +2,7 @@
 #include "bullet.h"
 #include <QGraphicsScene>
 #include <QDebug>
-
+#include <QTimer>
 Fighter::Fighter()
 {
 //    this->setRect(0,0,Fighterwidth,Fighterheight);
@@ -12,6 +12,13 @@ Fighter::Fighter()
     this->setFocus();
     bulletsound = new QMediaPlayer();
     bulletsound->setMedia(QUrl("qrc:/sounds/bullet.wav"));
+    fuelPack = new Fuel;
+    fuelPack->setValue(100);
+    fuelPack->setRange(0,100);
+
+    timer = new QTimer;
+    connect(timer,SIGNAL(timeout()),this,SLOT(decFuel()));
+    timer->start(800);
 }
 
 void Fighter::keyPressEvent(QKeyEvent* event)
@@ -66,5 +73,50 @@ void Fighter::keyReleaseEvent(QKeyEvent *event)
         qDebug() << "released";
         emit speedNormal();
     }
+}
 
+void Fighter::emitRes()
+{
+    qDebug() << "resumeeee";
+    emit Resume();
+}
+
+bool Fighter::isEmpty()
+{
+    if(fuelPack->value() == 0)
+        return 1;
+    return 0;
+}
+
+void Fighter::emitStop()
+{
+    emit Stop();
+}
+
+void Fighter::decFuel()
+{
+    fuelPack->setValue(fuelPack->value() - fuelPack->decSpeed);
+    if(isEmpty()){
+        emit Stop();
+    }
+}
+
+void Fighter::incFuel()
+{
+    int temp = fuelPack->value() + 20;
+    qDebug() << temp;
+    if(temp > 99){
+        temp = 99;
+    }
+    fuelPack->setValue(temp);
+}
+
+void Fighter::stopFuel()
+{
+    fuelPack->decSpeed = 0;
+}
+
+void Fighter::resumeFuel()
+{
+    fuelPack->decSpeed = fuelPack->stnDecSpeed;
 }
