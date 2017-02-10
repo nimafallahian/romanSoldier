@@ -26,8 +26,6 @@ void Gate::moveV()
     for(int i = 0 ; i < cldItems.size() ; i++){
         if (typeid(*(cldItems[i])) == typeid(Fighter)){
             emit Stop();
-            // Defeat
-            qDebug() << "Defeat";
             return;
         }
     }

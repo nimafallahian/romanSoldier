@@ -13,7 +13,12 @@ Jet::Jet()
     startingY = (rand() % 300) + 1200;
     qDebug() << startingY;
 //    setRect(0,0,width,height);
-    setPixmap(QPixmap(":/images/jet.png"));
+    if(hDirection == 0){
+        setPixmap(QPixmap(":/images/jet1.png"));
+    }
+    else{
+        setPixmap(QPixmap(":/images/jet.png"));
+    }
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -29,8 +34,7 @@ void Jet::moveV()
     QList <QGraphicsItem*> cldItems = collidingItems();
     for(int i = 0 ; i < cldItems.size() ; i++){
         if (typeid(*(cldItems[i])) == typeid(Fighter)){
-            // Defeat
-            qDebug() << "Defeat";
+
             emit Stop();
             return;
         }

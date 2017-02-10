@@ -12,6 +12,8 @@ Ship::Ship(bool hdir)
     hDirection = hdir;
 //    setRect(0,0,width,height);
     setPixmap(QPixmap(":/images/ship.png"));
+    if(hDirection == 1)
+        setPixmap(QPixmap(":/images/ship1.png"));
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -32,9 +34,11 @@ void Ship::moveV()
         }
         else if(typeid(*(cldItems[i])) == typeid(QGraphicsPixmapItem)){
             if(cldItems[i]->x() > x()){
+                setPixmap(QPixmap(":/images/ship.png"));
                 hDirection = 0;
             }
             else if(cldItems[i]->x() < x()){
+                setPixmap(QPixmap(":/images/ship1.png"));
                 hDirection = 1;
             }
 //            hDirection = (hDirection*(-1)) + 1;

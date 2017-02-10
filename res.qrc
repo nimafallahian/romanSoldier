@@ -24,5 +24,9 @@
         <file>continue.png</file>
         <file>fuel.png</file>
         <file>gate.png</file>
+        <file>finish.jpg</file>
+        <file>heli1.png</file>
+        <file>jet1.png</file>
+        <file>ship1.png</file>
     </qresource>
 </RCC>

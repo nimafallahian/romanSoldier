@@ -13,6 +13,9 @@ Helicopter::Helicopter(bool hdir)
     hDirection = hdir;
 //    setRect(0,0,width,height);
     setPixmap(QPixmap(":/images/heli.png"));
+    if(hDirection == 1){
+        setPixmap(QPixmap(":/images/heli1.png"));
+    }
     QTimer* timer = new QTimer;
     connect(timer,SIGNAL(timeout()),this,SLOT(moveV()));
     timer->start(50);
@@ -26,17 +29,17 @@ void Helicopter::moveV()
     QList <QGraphicsItem*> cldItems = collidingItems();
     for(int i = 0 ; i < cldItems.size() ; i++){
         if (typeid(*(cldItems[i])) == typeid(Fighter)){
-            // Defeat
-            qDebug() << "Defeat";
             emit Stop();
             return;
         }
         else if(typeid(*(cldItems[i])) == typeid(QGraphicsPixmapItem) ){
             if(cldItems[i]->x() > x()){
                 hDirection = 0;
+                setPixmap(QPixmap(":/images/heli.png"));
             }
             else if(cldItems[i]->x() < x()){
                 hDirection = 1;
+                setPixmap(QPixmap(":/images/heli1.png"));
             }
 //            hDirection = (hDirection*(-1)) + 1;
         }
